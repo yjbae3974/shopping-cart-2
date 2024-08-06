@@ -1,19 +1,8 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
     "paths": {
-      "@/*": ["./src/*"],
-      "@/styles/*": ["./src/styles/*"],
-      "@/components/*": ["./src/components/*"],
-      "@/hooks/*": ["./src/hooks/*"],
-      "@/utils/*": ["./src/utils/*"],
-      "@/contexts/*": ["./src/contexts/*"],
-      "@/types/*": ["./src/types/*"],
-      "@/lib/*": ["./src/lib/*"],
-      "@/constants/*": ["./constants/*"],
-      "@/store/*": ["./store/*"],
-      "@/icons/*": ["./public/icons/*"],
-      "@/images/*": ["./public/images/*"],
-      "@/lottie/*": ["./public/lottie/*"]
+      "@/*": ["*"]
     }
   }
 }
