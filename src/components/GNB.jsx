@@ -62,14 +62,14 @@ export const GNB = ({ type, pageName, onClick, ...rest }) => {
 
 const Base = styled.div`
   width: 100%;
-  max-width: 680px;
+  max-width: 500px;
   position: fixed;
   top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 100;
-  background-color: "white";
+  background-color: #f8f9fa;
 `;
 const Inner = styled.div`
   ${({ type }) => css`
@@ -83,10 +83,12 @@ const Inner = styled.div`
   `}
 `;
 const NavBar = styled.div`
+  width: 100%;
   height: 100%;
   margin-left: 4px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   gap: 16px;
 `;
