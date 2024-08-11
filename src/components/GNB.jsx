@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import { GNB_TYPE, PAGE } from "../constants/common";
+import ArrowBackIcon from "../images/svg/arrow-back.svg";
 
 const GNB_MENU = [
   { id: 0, name: "홈", path: PAGE.HOME },
@@ -47,11 +48,7 @@ export const GNB = ({ type, pageName, onClick, ...rest }) => {
       )}
       {type === GNB_TYPE.BACK && (
         <Inner type={type}>
-          <img
-            src="/images/arrow-back.png"
-            alt="back"
-            onClick={handleClickBack}
-          />
+          <img src={ArrowBackIcon} alt="back" onClick={handleClickBack} />
           <p>{pageName}</p>
           <div style={{ width: 36 }} />
         </Inner>

@@ -3,6 +3,7 @@ import { GNB } from "../components/GNB";
 import { GNB_TYPE, PAGE, PRODUCTS } from "../constants/common";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
+import { Button } from "../components/Button";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -98,24 +99,4 @@ const Description = styled.div`
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-`;
-const Button = styled.div`
-  width: 110px;
-  padding: 6px;
-  text-align: center;
-  border-radius: 6px;
-  border: 1px solid #ced4da;
-  background-color: #f8f9fa;
-  font-family: "Pretendard Variable", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 160%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #e9ecef;
-  }
 `;
