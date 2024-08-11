@@ -1,12 +1,21 @@
 import React from "react";
-import { GNB } from "../components/GNB";
-import { GNB_TYPE, PAGE, PRODUCTS } from "../constants/common";
+import { GNB } from "components/GNB";
+import { GNB_TYPE, PAGE, PRODUCTS } from "constants/common";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
-import { Button } from "../components/Button";
+import { Button } from "components/Button";
 
-function HomePage() {
+function HomePage({ cart, setCart }) {
   const navigate = useNavigate();
+
+  const handleCart = (consulting) => {
+    if (cart.find((item) => item.id === consulting.id)) {
+      alert("이미 장바구니에 추가된 상품입니다.");
+      return;
+    }
+    setCart((prev) => [...prev, consulting]);
+    alert("장바구니에 추가되었습니다.");
+  };
 
   return (
     <Base>
@@ -27,7 +36,9 @@ function HomePage() {
                 <Button onClick={() => navigate(`${PAGE.PRODUCT}/${id}`)}>
                   제품 설명 보기
                 </Button>
-                <Button>장바구니 담기</Button>
+                <Button onClick={() => handleCart(consulting)}>
+                  장바구니 담기
+                </Button>
               </Box>
             </Item>
           ))}
@@ -74,8 +85,8 @@ export const Box = styled.div`
 `;
 const Name = styled.div`
   font-family: "Pretendard Variable", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 550;
   line-height: 135%;
   color: black;
   text-align: start;
@@ -85,11 +96,15 @@ const Name = styled.div`
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  background: linear-gradient(to bottom, pink 70%, transparent 60%);
+  background-size: 100% 40%;
+  background-repeat: no-repeat;
+  background-position: 0 100%; /* Bottom alignment */
 `;
 const Description = styled.div`
   font-family: "Pretendard Variable", sans-serif;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 15px;
+  font-weight: 500;
   line-height: 160%;
   color: gray;
   text-align: start;

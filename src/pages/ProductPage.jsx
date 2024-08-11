@@ -1,13 +1,22 @@
-import { Button } from "../components/Button";
-import { GNB } from "../components/GNB";
-import { GNB_TYPE, PRODUCTS } from "../constants/common";
+import { Button } from "components/Button";
+import { GNB } from "components/GNB";
+import { GNB_TYPE, PRODUCTS } from "constants/common";
 import styled from "@emotion/styled";
 import React from "react";
 import { useParams } from "react-router-dom";
 
-function ProductPage() {
+function ProductPage({ cart, setCart }) {
   const { id } = useParams();
   const product = PRODUCTS[parseInt(id)];
+
+  const handleCart = (consulting) => {
+    if (cart.find((item) => item.id === consulting.id)) {
+      alert("이미 장바구니에 추가된 상품입니다.");
+      return;
+    }
+    setCart((prev) => [...prev, consulting]);
+    alert("장바구니에 추가되었습니다.");
+  };
 
   return (
     <Base>
@@ -22,7 +31,7 @@ function ProductPage() {
         <Price>
           상품 가격: <Highlight>{product.price}원</Highlight>
         </Price>
-        <Button>장바구니 담기</Button>
+        <Button onClick={() => handleCart(product)}>장바구니 담기</Button>
       </Inner>
     </Base>
   );

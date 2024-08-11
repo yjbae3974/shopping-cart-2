@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import { GNB_TYPE, PAGE } from "../constants/common";
-import ArrowBackIcon from "../images/svg/arrow-back.svg";
+import { GNB_TYPE, PAGE } from "constants/common";
+import ArrowBackIcon from "images/svg/arrow-back.svg";
 
 const GNB_MENU = [
   { id: 0, name: "홈", path: PAGE.HOME },
@@ -91,7 +91,10 @@ const NavBar = styled.div`
 `;
 const NavButton = styled.div`
   ${({ isActive }) => css`
+    font-family: "Pretendard Variable", sans-serif;
     font-size: 20px;
+    font-weight: 550;
+    line-height: 135%;
     color: ${isActive ? "black" : "grey"};
     height: 100%;
     display: flex;
