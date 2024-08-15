@@ -11,10 +11,10 @@ function CartPage({ cart, setCart }) {
       <GNB type={GNB_TYPE.MAIN} />
       <Inner>
         <Box gap={30}>
-          {cart.map((consulting, id) => (
+          {cart.map((product, id) => (
             <ProductInCart
               key={id}
-              product={consulting}
+              product={product}
               cart={cart}
               setCart={setCart}
             />

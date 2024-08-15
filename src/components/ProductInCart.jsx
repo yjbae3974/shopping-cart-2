@@ -7,8 +7,8 @@ import { Box } from "styles/StyleComponent";
 export const ProductInCart = ({ product, cart, setCart, ...rest }) => {
   const navigate = useNavigate();
 
-  const handleRemove = (consulting) => {
-    const newCart = cart.filter((item) => item !== consulting);
+  const handleRemove = (product) => {
+    const newCart = cart.filter((item) => item !== product);
     setCart(newCart);
   };
 

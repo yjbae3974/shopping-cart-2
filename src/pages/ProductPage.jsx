@@ -9,12 +9,12 @@ function ProductPage({ cart, setCart }) {
   const { id } = useParams();
   const product = PRODUCTS[parseInt(id)];
 
-  const handleCart = (consulting) => {
-    if (cart.find((item) => item.id === consulting.id)) {
+  const handleCart = (product) => {
+    if (cart.find((item) => item.id === product.id)) {
       alert("이미 장바구니에 추가된 상품입니다.");
       return;
     }
-    setCart((prev) => [...prev, consulting]);
+    setCart((prev) => [...prev, product]);
     alert("장바구니에 추가되었습니다.");
   };
 
