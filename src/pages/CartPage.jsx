@@ -4,8 +4,11 @@ import { GNB } from "components/GNB";
 import { GNB_TYPE } from "constants/common";
 import { ProductInCart } from "components/ProductInCart";
 import { Box } from "styles/StyleComponent";
+import { useSelector } from "react-redux";
 
-function CartPage({ cart, setCart }) {
+function CartPage() {
+  const cart = useSelector((state) => state.cart); // Redux에서 cart 상태 가져오기
+
   return (
     <Base>
       <GNB type={GNB_TYPE.MAIN} />
@@ -15,12 +18,7 @@ function CartPage({ cart, setCart }) {
             <Text>등록된 상품이 없습니다.</Text>
           ) : (
             cart.map((product, id) => (
-              <ProductInCart
-                key={id}
-                product={product}
-                cart={cart}
-                setCart={setCart}
-              />
+              <ProductInCart key={id} product={product} />
             ))
           )}
         </Box>

@@ -4,17 +4,21 @@ import { GNB_TYPE, PRODUCTS } from "constants/common";
 import styled from "@emotion/styled";
 import React from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setCart } from "actions/cartActions";
 
-function ProductPage({ cart, setCart }) {
+function ProductPage() {
   const { id } = useParams();
   const product = PRODUCTS[parseInt(id)];
+  const cart = useSelector((state) => state.cart); // Redux 상태에서 cart 가져오기
+  const dispatch = useDispatch();
 
   const handleCart = (product) => {
     if (cart.find((item) => item.id === product.id)) {
       alert("이미 장바구니에 추가된 상품입니다.");
       return;
     }
-    setCart((prev) => [...prev, product]);
+    dispatch(setCart([...cart, product])); // 새로운 제품을 cart에 추가
     alert("장바구니에 추가되었습니다.");
   };
 

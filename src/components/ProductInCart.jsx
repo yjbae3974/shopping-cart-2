@@ -3,13 +3,17 @@ import { Button } from "./Button";
 import { useNavigate } from "react-router-dom";
 import { PAGE } from "constants/common";
 import { Box } from "styles/StyleComponent";
+import { useDispatch, useSelector } from "react-redux";
+import { setCart } from "actions/cartActions";
 
-export const ProductInCart = ({ product, cart, setCart, ...rest }) => {
+export const ProductInCart = ({ product, ...rest }) => {
   const navigate = useNavigate();
+  const cart = useSelector((state) => state.cart); // Redux에서 cart 상태 가져오기
+  const dispatch = useDispatch(); // Redux에서 액션을 디스패치
 
   const handleRemove = (product) => {
-    const newCart = cart.filter((item) => item !== product);
-    setCart(newCart);
+    const newCart = cart.filter((item) => item.id !== product.id); // 제품을 장바구니에서 제거
+    dispatch(setCart(newCart)); // Redux 상태 업데이트
   };
 
   return (

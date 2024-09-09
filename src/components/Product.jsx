@@ -3,16 +3,23 @@ import { Button } from "./Button";
 import { useNavigate } from "react-router-dom";
 import { PAGE } from "constants/common";
 import { Box } from "styles/StyleComponent";
+import { useDispatch, useSelector } from "react-redux";
+import { setCart } from "actions/cartActions";
 
-export const Product = ({ product, cart, setCart, ...rest }) => {
+export const Product = ({ product, ...rest }) => {
   const navigate = useNavigate();
+  // Redux 상태에서 cart 가져오는 방법, useSelector 훅 사용
+  const cart = useSelector((state) => state.cart); 
+	// Action을 파라미터로 전달하고, Reducer를 실행하는 역할
+  const dispatch = useDispatch();
 
   const handleCart = (product) => {
-    if (cart.find((item) => item.id === product.id)) {
+    if (Array.isArray(cart) && cart.find((item) => item.id === product.id)) {
       alert("이미 장바구니에 추가된 상품입니다.");
       return;
     }
-    setCart((prev) => [...prev, product]);
+    // 새로운 제품을 cart에 추가
+    dispatch(setCart([...(Array.isArray(cart) ? cart : []), product])); 
     alert("장바구니에 추가되었습니다.");
   };
 
