@@ -12,7 +12,7 @@ function HomePage({ cart, setCart }) {
       <Inner>
         <Box gap={30}>
           {PRODUCTS.map((product, id) => (
-            <Product key={id} product={product} cart={cart} setCart={setCart} />
+            <Product key={id} product={product}/>
           ))}
         </Box>
       </Inner>
