@@ -4,8 +4,9 @@ import { GNB_TYPE, PRODUCTS } from "constants/common";
 import styled from "@emotion/styled";
 import React from "react";
 import { useParams } from "react-router-dom";
-
-function ProductPage({ cart, setCart }) {
+import { UseCartStore } from "store/CartStore";
+function ProductPage() {
+  const { cart, setCart } = UseCartStore();
   const { id } = useParams();
   const product = PRODUCTS[parseInt(id)];
 
@@ -14,7 +15,8 @@ function ProductPage({ cart, setCart }) {
       alert("이미 장바구니에 추가된 상품입니다.");
       return;
     }
-    setCart((prev) => [...prev, product]);
+    const newCart = [...cart, product];
+    setCart(newCart);
     alert("장바구니에 추가되었습니다.");
   };
 

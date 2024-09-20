@@ -4,8 +4,16 @@ import { GNB } from "components/GNB";
 import { GNB_TYPE } from "constants/common";
 import { ProductInCart } from "components/ProductInCart";
 import { Box } from "styles/StyleComponent";
+import { UseCartStore } from "store/CartStore";
 
-function CartPage({ cart, setCart }) {
+function CartPage() {
+  const {cart, setCart} = UseCartStore();
+  console.log(...cart)
+  let totalPrice = 0;
+  for (const product of cart) {
+    totalPrice += product.price;
+  }
+console.log(totalPrice);
   return (
     <Base>
       <GNB type={GNB_TYPE.MAIN} />
@@ -24,12 +32,23 @@ function CartPage({ cart, setCart }) {
             ))
           )}
         </Box>
+        <TotalPrice>
+          총 가격: {totalPrice}원
+        </TotalPrice>
       </Inner>
     </Base>
   );
 }
 
 export default CartPage;
+
+const TotalPrice = styled.div`
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: right;
+
+`
 
 const Base = styled.div`
   width: 100%;
